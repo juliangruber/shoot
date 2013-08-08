@@ -1,7 +1,8 @@
-
 # shoot
 
 Take pictures on mobile phones or just pick one on a desktop.
+
+**Try it out on [requirebin](http://requirebin.com/embed?gist=6181429)**!
 
 ## Example
 
