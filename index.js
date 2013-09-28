@@ -19,7 +19,7 @@ module.exports = Camera;
  */
 
 function Camera (opts) {
-  if (!(this instanceof Camera)) return new Camera();
+  if (!(this instanceof Camera)) return new Camera(opts);
   Emitter.call(this);
   this.el = createInput(opts && opts.type);
   this.load = load.bind(null, this);
