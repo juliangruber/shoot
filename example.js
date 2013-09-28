@@ -4,7 +4,7 @@ var Camera = require('..');
  * Use camera's input field.
  */
 
-var camera = new Camera();
+var camera = new Camera({ type: ['jpg', 'gif'] });
 document.body.appendChild(camera.el);
 
 camera.on('loading', function () {

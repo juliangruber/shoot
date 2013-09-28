@@ -40,9 +40,14 @@ document.body.appendChild(shoot);
 
 ## API
 
-### Camera()
+### Camera([opts])
 
 Create a new camera.
+
+Possible options:
+
+* `type`: The accepted file type. Can be a `String`, like `'jpeg'`, or an
+`Array`, like `['jpeg', 'gif']`. By default all images are accepted.
 
 ### Camera#shoot(fn)
 

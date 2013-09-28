@@ -14,12 +14,14 @@ module.exports = Camera;
 
 /**
  * Camera component.
+ *
+ * @param {Object=} opts
  */
 
-function Camera () {
+function Camera (opts) {
   if (!(this instanceof Camera)) return new Camera();
   Emitter.call(this);
-  this.el = createInput();
+  this.el = createInput(opts && opts.type);
   this.load = load.bind(null, this);
   this.el.addEventListener('change', this.load);
 }
@@ -76,13 +78,32 @@ function load (self, ev) {
 
 /**
  * Create camera input field.
+ *
+ * @param {String|Array=} type
+ * @return {Element}
  */
 
-function createInput () {
+function createInput (type) {
   var input = document.createElement('input');
   input.type = 'file';
-  input.accept = 'image/*';
   input.capture = 'camera';
+  input.accept = accept(type);
   return input;
+}
+
+/**
+ * Accept field value helper.
+ *
+ * @param {String|Array=} type
+ * @return {String}
+ */
+
+function accept(type) {
+  if (typeof type == 'string') return 'image/' + type;
+  if (Array.isArray(type)) return type
+      .map(function(type) { return 'image/' + type })
+      .join(',');
+  if (!type) return 'image/*';
+  throw new Error('unknown type');
 }
 
