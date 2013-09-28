@@ -1,7 +1,7 @@
 {
   "name": "shoot",
   "description": "Take pictures on mobile phones or just pick one on a desktop.",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/juliangruber/shoot.git"
@@ -16,7 +16,12 @@
     "beefy": "~0.4.1"
   },
   "keywords": [
-    "shoot", "picture", "camera", "image", "browser", "browserify"
+    "shoot",
+    "picture",
+    "camera",
+    "image",
+    "browser",
+    "browserify"
   ],
   "author": {
     "name": "Julian Gruber",
