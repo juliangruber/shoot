@@ -57,6 +57,10 @@ Take a picture and call `fn` with the data uri.
 
 The camera's dom element - a `<input>` field.
 
+### Camera#input(el)
+
+Make camera attach its event listeners to `el` instead of the internal input.
+
 ### Camera#on('picture', fn)
 
 `fn` is called when a picture is taken.

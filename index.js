@@ -21,12 +21,24 @@ module.exports = Camera;
 function Camera (opts) {
   if (!(this instanceof Camera)) return new Camera(opts);
   Emitter.call(this);
-  this.el = createInput(opts && opts.type);
-  this.load = load.bind(null, this);
-  this.el.addEventListener('change', this.load);
+  this.input(createInput(opts && opts.type));
 }
 
 inherits(Camera, Emitter);
+
+/**
+ * Set input to use.
+ *
+ * @param {Element} input
+ * @return {Camera}
+ * @api public
+ */
+
+Camera.prototype.input = function (el) {
+  this.el = el;
+  this.el.addEventListener('change', load.bind(this));
+  return this;
+};
 
 /**
  * Shoot a picture.
@@ -60,7 +72,8 @@ Camera.prototype.remove = function () {
  * @api private
  */
 
-function load (self, ev) {
+function load (ev) {
+  var self = this;
   var files = ev.target.files;
   if (!files || !files.length) return;
 
@@ -100,10 +113,13 @@ function createInput (type) {
 
 function accept(type) {
   if (typeof type == 'string') return 'image/' + type;
-  if (Array.isArray(type)) return type
+  if (Array.isArray(type)) {
+    return type
       .map(function(type) { return 'image/' + type })
       .join(',');
+  }
   if (!type) return 'image/*';
+
   throw new Error('unknown type');
 }
 
