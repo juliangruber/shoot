@@ -13,7 +13,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "beefy": "~0.4.1"
+    "beefy": "~2.1.8"
   },
   "keywords": [
     "shoot",
